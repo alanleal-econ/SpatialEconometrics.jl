@@ -6,7 +6,7 @@ using Distributions
 using Printf
 using PrettyTables
 function effects_sarar(y,X,W,M,β1)
-    n=lenghth(y)
+    n=length(y)
     ψ=inv(I(n)-β1[2]*W)
     eft_direto=zeros(length(β1)-4)
     eft_indireto=zeros(length(β1)-4)
