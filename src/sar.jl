@@ -1,6 +1,7 @@
 # SAR v0.2
 # Definindo a função de verossimilhança:
 using Optim
+using LinearAlgebra
 function sar_likelihood(params)
     σ2,ρ, β = params[1],params[2], params[3:end]
     ε = (I(n) - ρ*W)*y-X*β
