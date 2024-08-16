@@ -2,7 +2,10 @@
 # Definindo a função de verossimilhança:
 using Optim
 using LinearAlgebra
-function sar_likelihood(params,n)
+using ForwardDiff
+using Statistics
+using Distributions
+function sar_likelihood(params,n,X,y,W)
     σ2,ρ, β = params[1],params[2], params[3:end]
     ε = (I(n) - ρ*W)*y-X*β
     loglik = -(n/2)*log(2*pi*σ2)-((1/(2*σ2))*(ε'*ε))+logdet(I(n)-ρ*W)
@@ -16,7 +19,7 @@ function sar_coef(X,y,W)
     initial_params = vcat(10,0.5,zeros(n_x)) # Initial values for ρ e β
     lower_bounds = [0;-1;fill(-Inf,n_x)]
     upper_bounds = [Inf;1;fill(Inf,n_x)]
-    result = optimize(params -> sar_likelihood(params, n),lower_bounds, upper_bounds,initial_params,Fminbox())
+    result = optimize(params -> sar_likelihood(params, n,X,y,W),lower_bounds, upper_bounds,initial_params,Fminbox())
     β = result.minimizer
     ll=-result.minimum
     return  β,ll
