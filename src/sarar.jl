@@ -49,8 +49,9 @@ function sarar_pvalor(y,X,coefs,desvios_padroes)
     return hcat(confidence_intervals_lower,confidence_intervals_upper,p_values)
 end 
 function sarar(X,y,W,M)
+    n=length(y)
     coefs,ll=sarar_coef(y,X,W,M)
-    desvios_padroes=sarar_std(X,y,W,M,coefs)
+    desvios_padroes=sarar_std(X,y,W,M,coefs,n)
     ic_pvalores=sar_pvalor(y,X,coefs,desvios_padroes)
     sigma2=coefs[1]
     ρ=hcat(coefs[2],desvios_padroes[2])

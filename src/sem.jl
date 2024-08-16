@@ -45,9 +45,10 @@ function sem_pvalor(y,X,coefs,desvios_padroes)
 end 
 
 function sem(X,y,W)
+    n=length(y)
     coefs,ll=sem_coefs(X,y,W)
     sigma2=coefs[1]
-    desvios_padroes=sem_sdev(X,y,W,coefs)
+    desvios_padroes=sem_sdev(X,y,W,coefs,n)
     ic_pvalores=sar_pvalor(y,X,coefs,desvios_padroes)
     λ=hcat(coefs[2],desvios_padroes[2])
     coefs=hcat(coefs,desvios_padroes,ic_pvalores)[3:end,:]
