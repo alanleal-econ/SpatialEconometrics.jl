@@ -4,6 +4,7 @@ using ForwardDiff
 using Statistics
 using Distributions
 using Printf
+using PrettyTables
 function sem_summary(semmodel,names_col)
     print(".------------.---------.---------.----------.----------.-----------.","\n")
     print("Maximum Likelihood Estimation of SEM Model","\n")

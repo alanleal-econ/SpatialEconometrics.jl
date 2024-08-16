@@ -4,6 +4,7 @@ using ForwardDiff
 using Statistics
 using Distributions
 using Printf
+using PrettyTables
 function log_likelihood_sarar(params)# objetos que a função retorna sigma2, rho, lambda, beta
     n = length(y)
     I_n = I(n) # Identity matrix of size n

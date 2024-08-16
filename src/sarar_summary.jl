@@ -4,6 +4,7 @@ using ForwardDiff
 using Statistics
 using Distributions
 using Printf
+using PrettyTables
 function sarar_summary(sarmodel,names_col)
     print(".------------.---------.---------.----------.----------.-----------.","\n")
     print("Maximum Likelihood Estimation of SAC Model","\n")

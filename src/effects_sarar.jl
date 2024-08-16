@@ -4,6 +4,7 @@ using ForwardDiff
 using Statistics
 using Distributions
 using Printf
+using PrettyTables
 function effects_sarar(y,X,W,M,β1)
     ψ=inv(I(n)-β1[2]*W)
     eft_direto=zeros(length(β1)-4)

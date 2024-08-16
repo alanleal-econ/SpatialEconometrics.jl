@@ -4,6 +4,7 @@ using ForwardDiff
 using Statistics
 using Distributions
 using Printf
+using PrettyTables
 function log_likelihood_sem(params)
     n = length(y)
     #I = I(n)  # Identity matrix
