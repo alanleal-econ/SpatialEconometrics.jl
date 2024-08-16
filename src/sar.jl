@@ -41,6 +41,7 @@ function sar_pvalor(y,X,coefs,desvios_padroes)
 end 
 
 function sar(X,y,W)
+    n=size(X)[1]
     coefs,ll=sar_coef(X,y,W)
     desvios_padroes=sar_sdev(X,y,W,coefs)
     # Próximos Passos - pvlores e outros desenvolvimentos
@@ -48,7 +49,7 @@ function sar(X,y,W)
     sigma2=coefs[1]
     rho=vcat(coefs[2],desvios_padroes[2])
     coefs=hcat(coefs,desvios_padroes,ic_pvalores)[3:end,:]
-    nobs=n=size(X)[1]
+    nobs=n
     k=length(coefs[:,1])
     dof=n-k
     results=(coefs = coefs, sigma2 = sigma2, rho = rho,nobs=nobs,dof=dof,ll=ll)
