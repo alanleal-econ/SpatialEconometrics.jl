@@ -5,10 +5,8 @@ using Statistics
 using Distributions
 using Printf
 using PrettyTables
-function log_likelihood_sarar(params)# objetos que a função retorna sigma2, rho, lambda, beta
-    n = length(y)
+function log_likelihood_sarar(params,n,X,y,W,M)# objetos que a função retorna sigma2, rho, lambda, beta
     I_n = I(n) # Identity matrix of size n
-
     # Calculate the residuals
     u = y - params[2] * W * y - X * params[4:end]
     tilde_u = (I_n - params[3] * M) * u
@@ -27,13 +25,14 @@ function sarar_coef(y,X,W,M)
     initial_params = vcat(1,0.5,0.5,zeros(n_x)) # Initial values for ρ e β
     lower_bounds = [0;-1;-1;fill(-Inf,n_x)]
     upper_bounds = [Inf;1;1;fill(Inf,n_x)]
-    result = optimize(log_likelihood_sarar,lower_bounds, upper_bounds,initial_params,Fminbox())
+    result = optimize(params -> log_likelihood_sarar(params, n,X,y,W,M),lower_bounds, upper_bounds,initial_params,Fminbox())
     β = result.minimizer
     ll=-result.minimum
     return β,ll
 end
-function sarar_std(y,X,W,M,coefs)
-    hessian_matrix = ForwardDiff.hessian(log_likelihood_sarar, coefs)
+function sarar_std(X,y,W,M,β,n)
+    likelihood_β_only = β -> sar_likelihood(β, n, X, y, W,M)
+    hessian_matrix = ForwardDiff.hessian(log_likelihood_sarar, β)
     cov_matrix = inv(hessian_matrix)
     std_devs = sqrt.(diag(cov_matrix))
     return std_devs

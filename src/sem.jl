@@ -5,8 +5,8 @@ using Statistics
 using Distributions
 using Printf
 using PrettyTables
-function log_likelihood_sem(params)
-    n = length(y)
+function log_likelihood_sem(params,n,X,y,W)
+    #n = length(y)
     #I = I(n)  # Identity matrix
    #u = y - X * params[3:end]
     log_det = logdet(I(n) - params[2] * W)
@@ -15,16 +15,18 @@ function log_likelihood_sem(params)
 end
 function sem_coefs(X,y,W)
     n_x=size(X)[2]
+    n=size(X)[1]
     initial_params = vcat(1,0.5,zeros(n_x)) # Initial values for sigma, ρ e β
     lower_bounds = [0;-1;fill(-Inf,n_x)]
     upper_bounds = [Inf;1;fill(Inf,n_x)]
-    result = optimize(log_likelihood_sem,lower_bounds, upper_bounds,initial_params,Fminbox())
+    result = optimize(params -> sar_likelihood(params,n,X,y,W),lower_bounds, upper_bounds,initial_params,Fminbox())
     β = result.minimizer
     ll=-result.minimum
     return β,ll
 end
-function sem_sdev(X,y,W,coefs)
-    hessian_matrix = ForwardDiff.hessian(log_likelihood_sem, coefs)
+function sem_sdev(X,y,W,coefs,n)
+    likelihood_β_only = β -> sar_likelihood(β, n, X, y, W)
+    hessian_matrix = ForwardDiff.hessian(likelihood_β_only, β)
     cov_matrix = inv(hessian_matrix)
     std_devs = sqrt.(diag(cov_matrix))
     return std_devs
