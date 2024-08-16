@@ -1,5 +1,6 @@
 # SAR v0.2
 # Definindo a função de verossimilhança:
+using Optim
 function sar_likelihood(params)
     σ2,ρ, β = params[1],params[2], params[3:end]
     ε = (I(n) - ρ*W)*y-X*β
@@ -13,7 +14,7 @@ function sar_coef(X,y,W)
     initial_params = vcat(10,0.5,zeros(n_x)) # Initial values for ρ e β
     lower_bounds = [0;-1;fill(-Inf,n_x)]
     upper_bounds = [Inf;1;fill(Inf,n_x)]
-    result = optimize(sar_likelihood,lower_bounds, upper_bounds,initial_params,Fminbox{GradientDescent}())
+    result = optimize(sar_likelihood,lower_bounds, upper_bounds,initial_params,Fminbox())
     β = result.minimizer
     ll=-result.minimum
     return  β,ll
