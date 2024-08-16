@@ -5,6 +5,7 @@ using LinearAlgebra
 using ForwardDiff
 using Statistics
 using Distributions
+using Printf
 function sar_likelihood(params,n,X,y,W)
     σ2,ρ, β = params[1],params[2], params[3:end]
     ε = (I(n) - ρ*W)*y-X*β

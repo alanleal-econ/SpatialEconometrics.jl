@@ -1,3 +1,9 @@
+using Optim
+using LinearAlgebra
+using ForwardDiff
+using Statistics
+using Distributions
+using Printf
 function log_likelihood_sem(params)
     n = length(y)
     #I = I(n)  # Identity matrix

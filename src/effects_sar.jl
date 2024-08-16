@@ -1,4 +1,10 @@
 # Definindo função efeitos:
+using Optim
+using LinearAlgebra
+using ForwardDiff
+using Statistics
+using Distributions
+using Printf
 function effects_sar(y,X,W,β1)
     ψ=inv(I(n)-β1[2]*W)
     eft_direto=zeros(length(β1)-3)
