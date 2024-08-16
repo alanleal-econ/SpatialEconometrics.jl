@@ -1,10 +1,11 @@
 # SpatialEconometrics.jl
 This package implements some spatial models, by their maximum likelihood estimators. 
 
-At this initial current state, we have implemented their ML estimators and, when aplicable, effects for:
+At this current state, we have implemented their ML estimators and, when aplicable, effects for:
+
 1) SAR: Spatial Autorregressive Model;
 2) SEM: Spatial Error Model;
-3) SAC or SARAR: Spatatial lagged dependent and error model.
+3) SAC or SARAR: Spatial lagged dependent and error model.
 
 Questions should me directed to the e-mail:prof@alanleal-econ.com
 
