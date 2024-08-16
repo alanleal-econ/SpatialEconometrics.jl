@@ -24,7 +24,7 @@ function sem_coefs(X,y,W)
     ll=-result.minimum
     return β,ll
 end
-function sem_sdev(X,y,W,coefs,n)
+function sem_sdev(X,y,W,β,n)
     likelihood_β_only = β -> sar_likelihood(β, n, X, y, W)
     hessian_matrix = ForwardDiff.hessian(likelihood_β_only, β)
     cov_matrix = inv(hessian_matrix)
