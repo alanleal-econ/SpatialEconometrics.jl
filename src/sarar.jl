@@ -32,7 +32,7 @@ function sarar_coef(y,X,W,M)
     return β,ll
 end
 function sarar_std(X,y,W,M,β,n)
-    likelihood_β_only = β -> sar_likelihood(β, n, X, y, W,M)
+    likelihood_β_only = β -> log_likelihood_sarar(β, n, X, y, W,M)
     hessian_matrix = ForwardDiff.hessian(log_likelihood_sarar, β)
     cov_matrix = inv(hessian_matrix)
     std_devs = sqrt.(diag(cov_matrix))
