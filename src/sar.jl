@@ -25,7 +25,7 @@ function sar_coef(X,y,W)
     return  β,ll
 end
 
-function sar_sdev(X,Y,W,β,n)
+function sar_sdev(X,y,W,β,n)
     likelihood_β_only = β -> sar_likelihood(β, n, X, y, W)
     H=ForwardDiff.hessian(likelihood_β_only, β)
     σk = ForwardDiff.value.(real.(H))\I
