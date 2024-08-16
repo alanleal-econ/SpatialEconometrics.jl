@@ -22,6 +22,7 @@ function log_likelihood_sarar(params,n,X,y,W,M)# objetos que a função retorna 
 end
 function sarar_coef(y,X,W,M)
     n_x=size(X)[2]
+    n=length(y)
     initial_params = vcat(1,0.5,0.5,zeros(n_x)) # Initial values for ρ e β
     lower_bounds = [0;-1;-1;fill(-Inf,n_x)]
     upper_bounds = [Inf;1;1;fill(Inf,n_x)]
