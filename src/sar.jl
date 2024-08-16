@@ -25,8 +25,9 @@ function sar_coef(X,y,W)
     return  β,ll
 end
 
-function sar_sdev(X,Y,W,β)
-    H=ForwardDiff.hessian(sar_likelihood, β)
+function sar_sdev(X,Y,W,β,n)
+    likelihood_β_only = β -> sar_likelihood(β, n, X, y, W)
+    H=ForwardDiff.hessian(likelihood_β_only, β)
     σk = ForwardDiff.value.(real.(H))\I
     desvio_padrao=sqrt.(diag(σk))
     return desvio_padrao
@@ -47,7 +48,7 @@ end
 function sar(X,y,W)
     n=size(X)[1]
     coefs,ll=sar_coef(X,y,W)
-    desvios_padroes=sar_sdev(X,y,W,coefs)
+    desvios_padroes=sar_sdev(X,y,W,coefs,n)
     # Próximos Passos - pvlores e outros desenvolvimentos
     ic_pvalores=sar_pvalor(y,X,coefs,desvios_padroes)
     sigma2=coefs[1]
