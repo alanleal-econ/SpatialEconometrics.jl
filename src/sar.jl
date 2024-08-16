@@ -38,7 +38,7 @@ function sar_pvalor(y,X,coefs,desvios_padroes)
     return hcat(confidence_intervals_lower,confidence_intervals_upper,p_values)
 end 
 
-function sar_estimacao(X,y,W)
+function sar(X,y,W)
     coefs,ll=sar_coef(X,y,W)
     desvios_padroes=sar_sdev(X,y,W,coefs)
     # Próximos Passos - pvlores e outros desenvolvimentos

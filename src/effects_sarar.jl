@@ -1,4 +1,4 @@
-function efeitos_sarar(y,X,W,M,β1)
+function effects_sarar(y,X,W,M,β1)
     ψ=inv(I(n)-β1[2]*W)
     eft_direto=zeros(length(β1)-4)
     eft_indireto=zeros(length(β1)-4)

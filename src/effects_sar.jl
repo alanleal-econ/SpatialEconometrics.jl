@@ -1,5 +1,5 @@
 # Definindo função efeitos:
-function efeitos(y,X,W,β1)
+function effects_sar(y,X,W,β1)
     ψ=inv(I(n)-β1[2]*W)
     eft_direto=zeros(length(β1)-3)
     eft_indireto=zeros(length(β1)-3)

@@ -35,7 +35,7 @@ function sem_pvalor(y,X,coefs,desvios_padroes)
     return hcat(confidence_intervals_lower,confidence_intervals_upper,p_values)
 end 
 
-function sem_estimacao(X,y,W)
+function sem(X,y,W)
     coefs,ll=sem_coefs(X,y,W)
     sigma2=coefs[1]
     desvios_padroes=sem_sdev(X,y,W,coefs)

@@ -2,21 +2,21 @@ module SpatialEconometrics
 
 greet() = print("Hello World!")
 include("sar.jl")
-export sar_estimacao
+export sar
 include("sem.jl")
-export sem_estimacao
+export sem
 include("sarar.jl")
-export sarar_estimacao
+export sarar
 include("sar_summary.jl")
-export summary_sar
+export sar_summary
 include("sem_summary.jl")
-export summary_sem
+export sem_summary
 include("sarar_summary.jl")
-export summary_sarar
+export sarar_summary
 include("effects_sarar.jl")
-export efeitos_sarar
+export effects_sarar
 include("effects_sar.jl")
-export efeitos
+export effects_sar
 include("effects_summary.jl")
 export effects_summary
 

@@ -42,7 +42,7 @@ function sarar_pvalor(y,X,coefs,desvios_padroes)
     p_values = [2 * (1 - cdf(TDist(dof), abs(coef / std))) for (coef, std) in zip(coefs, desvios_padroes)]
     return hcat(confidence_intervals_lower,confidence_intervals_upper,p_values)
 end 
-function sarar_estimacao(X,y,W,M)
+function sarar(X,y,W,M)
     coefs,ll=sarar_coef(y,X,W,M)
     desvios_padroes=sarar_std(X,y,W,M,coefs)
     ic_pvalores=sar_pvalor(y,X,coefs,desvios_padroes)

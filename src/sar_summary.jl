@@ -1,4 +1,4 @@
-function summary_sar(sarmodel,names_col)
+function sar_summary(sarmodel,names_col)
     print(".------------.---------.---------.----------.----------.-----------.","\n")
     print("Maximum Likelihood Estimation of SAR Model","\n")
     print(".------------.---------.---------.----------.----------.-----------.","\n")

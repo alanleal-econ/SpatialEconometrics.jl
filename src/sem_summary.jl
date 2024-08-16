@@ -1,4 +1,4 @@
-function summary_sem(semmodel,names_col)
+function sem_summary(semmodel,names_col)
     print(".------------.---------.---------.----------.----------.-----------.","\n")
     print("Maximum Likelihood Estimation of SEM Model","\n")
     print(".------------.---------.---------.----------.----------.-----------.","\n")
