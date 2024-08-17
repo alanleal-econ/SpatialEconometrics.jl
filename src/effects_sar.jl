@@ -1,4 +1,3 @@
-# Definindo função efeitos:
 using Optim
 using LinearAlgebra
 using ForwardDiff

@@ -5,25 +5,21 @@ using Statistics
 using Distributions
 using Printf
 using PrettyTables
-function log_likelihood_sarar(params,n,X,y,W,M)# objetos que a função retorna sigma2, rho, lambda, beta
-    I_n = I(n) # Identity matrix of size n
-    # Calculate the residuals
+function log_likelihood_sarar(params,n,X,y,W,M)
+    I_n = I(n)
     u = y - params[2] * W * y - X * params[4:end]
     tilde_u = (I_n - params[3] * M) * u
-    
-    # Calculate the log-likelihood components
     log_det_W = logdet(I_n - params[2] * W)
     log_det_M = logdet(I_n - params[3] * M)
     quad_form = tilde_u' * tilde_u
-    
-    log_likelihood = - (n / 2) * log(2 * π) - (n / 2) * log(params[1]) +
+    \log_likelihood = - (n / 2) * log(2 * π) - (n / 2) * log(params[1]) +
                     log_det_W + log_det_M - (1 / (2 * params[1])) * quad_form
     return -log_likelihood
 end
 function sarar_coef(y,X,W,M)
     n_x=size(X)[2]
     n=length(y)
-    initial_params = vcat(1,0.5,0.5,zeros(n_x)) # Initial values for ρ e β
+    initial_params = vcat(1,0.5,0.5,zeros(n_x))
     lower_bounds = [0;-1;-1;fill(-Inf,n_x)]
     upper_bounds = [Inf;1;1;fill(Inf,n_x)]
     result = optimize(params -> log_likelihood_sarar(params, n,X,y,W,M),lower_bounds, upper_bounds,initial_params,Fminbox())

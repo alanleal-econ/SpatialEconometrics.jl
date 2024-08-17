@@ -1,5 +1,3 @@
-# SAR v0.2
-# Definindo a função de verossimilhança:
 using Optim
 using LinearAlgebra
 using ForwardDiff
@@ -11,14 +9,12 @@ function sar_likelihood(params,n,X,y,W)
     σ2,ρ, β = params[1],params[2], params[3:end]
     ε = (I(n) - ρ*W)*y-X*β
     loglik = -(n/2)*log(2*pi*σ2)-((1/(2*σ2))*(ε'*ε))+logdet(I(n)-ρ*W)
-    return -loglik # Negativo da log-verossimilhança para de fato maximizar essa função
+    return -loglik
 end
 function sar_coef(X,y,W)
-    # Calculando os erros-padrões:
-    # Numeros de parâmetis 
     n_x=size(X)[2]
     n=size(X)[1]
-    initial_params = vcat(10,0.5,zeros(n_x)) # Initial values for ρ e β
+    initial_params = vcat(10,0.5,zeros(n_x))
     lower_bounds = [0;-1;fill(-Inf,n_x)]
     upper_bounds = [Inf;1;fill(Inf,n_x)]
     result = optimize(params -> sar_likelihood(params, n,X,y,W),lower_bounds, upper_bounds,initial_params,Fminbox())
@@ -51,7 +47,6 @@ function sar(X,y,W)
     n=size(X)[1]
     coefs,ll=sar_coef(X,y,W)
     desvios_padroes=sar_sdev(X,y,W,coefs,n)
-    # Próximos Passos - pvlores e outros desenvolvimentos
     ic_pvalores=sar_pvalor(y,X,coefs,desvios_padroes)
     sigma2=coefs[1]
     rho=vcat(coefs[2],desvios_padroes[2])

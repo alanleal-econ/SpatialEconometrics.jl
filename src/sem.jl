@@ -6,9 +6,6 @@ using Distributions
 using Printf
 using PrettyTables
 function log_likelihood_sem(params,n,X,y,W)
-    #n = length(y)
-    #I = I(n)  # Identity matrix
-   #u = y - X * params[3:end]
     log_det = logdet(I(n) - params[2] * W)
     log_likelihood = -n/2 * log(2 * π) - n/2 * log(params[1]) + log_det - (1 / (2 * params[1])) *(y-X*params[3:end])'* ((I(n)-params[2]*W') * (I(n)-params[2]*W))*(y-X*params[3:end])
     return -log_likelihood
@@ -16,7 +13,7 @@ end
 function sem_coefs(X,y,W)
     n_x=size(X)[2]
     n=size(X)[1]
-    initial_params = vcat(1,0.5,zeros(n_x)) # Initial values for sigma, ρ e β
+    initial_params = vcat(1,0.5,zeros(n_x))\
     lower_bounds = [0;-1;fill(-Inf,n_x)]
     upper_bounds = [Inf;1;fill(Inf,n_x)]
     result = optimize(params -> sar_likelihood(params,n,X,y,W),lower_bounds, upper_bounds,initial_params,Fminbox())
