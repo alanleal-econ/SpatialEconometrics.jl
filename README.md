@@ -17,7 +17,7 @@ Pkg.add(url="https://github.com/alanleal-econ/spatialeconometrics.jl")
 
 **Documentation and Tutorials**
 
-In this package website (www.alanleal-econ.com/SpatialEconometrics), you can find many resources related to the package and its use. 
+In this docs folder, you can find many resources related to the package and its use. 
 
 **Questions**
 
