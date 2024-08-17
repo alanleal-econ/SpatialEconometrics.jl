@@ -12,7 +12,7 @@ At this current state, we have implemented the ML estimators and, when aplicable
 You can  install this package with the Pkg package, by using the following command: 
 ```
 using Pkg
-Pkg.add(url="https://github.com/alanleal-econ/SpatialEconometrics.jl")
+Pkg.add(url="https://github.com/alanleal-econ/spatialeconometrics.jl")
 ```
 
 **Documentation and Tutorials**
