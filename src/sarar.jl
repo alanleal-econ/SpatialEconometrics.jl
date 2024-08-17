@@ -12,7 +12,7 @@ function log_likelihood_sarar(params,n,X,y,W,M)
     log_det_W = logdet(I_n - params[2] * W)
     log_det_M = logdet(I_n - params[3] * M)
     quad_form = tilde_u' * tilde_u
-    \log_likelihood = - (n / 2) * log(2 * π) - (n / 2) * log(params[1]) +
+    log_likelihood = - (n / 2) * log(2 * π) - (n / 2) * log(params[1]) +
                     log_det_W + log_det_M - (1 / (2 * params[1])) * quad_form
     return -log_likelihood
 end
