@@ -8,6 +8,7 @@ At this current state, we have implemented the ML estimators and, when aplicable
 3) SAC or SARAR: Spatial lagged dependent and error model.
 
 **Instalation**
+
 You can  install this package with the Pkg package, by using the following command: 
 ```
 using Pkg
@@ -15,6 +16,7 @@ Pkg.add(url="https://github.com/alanleal-econ/SpatialEconometrics.jl")
 ```
 
 **Questions**
+
 Questions should me directed to the e-mail:prof@alanleal-econ.com
 
 **Disclaimer**
