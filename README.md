@@ -15,6 +15,10 @@ using Pkg
 Pkg.add(url="https://github.com/alanleal-econ/SpatialEconometrics.jl")
 ```
 
+**Documentation and Tutorials**
+
+In this package website (www.alanleal-econ.com/SpatialEconometrics), you can find many resources related to the package and its use. 
+
 **Questions**
 
 Questions should me directed to the e-mail:prof@alanleal-econ.com
