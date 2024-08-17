@@ -13,7 +13,7 @@ end
 function sem_coefs(X,y,W)
     n_x=size(X)[2]
     n=size(X)[1]
-    initial_params = vcat(1,0.5,zeros(n_x))\
+    initial_params = vcat(1,0.5,zeros(n_x))
     lower_bounds = [0;-1;fill(-Inf,n_x)]
     upper_bounds = [Inf;1;fill(Inf,n_x)]
     result = optimize(params -> sar_likelihood(params,n,X,y,W),lower_bounds, upper_bounds,initial_params,Fminbox())
