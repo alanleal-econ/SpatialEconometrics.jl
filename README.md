@@ -17,7 +17,7 @@ Pkg.add(url="https://github.com/alanleal-econ/spatialeconometrics.jl")
 
 **Documentation and Tutorials**
 
-You can find details on SpatialEconometrics.jl functions, as well as their usage in the [package website](https://www.alanleal-econ.com/SpatialEconometrics). 
+You can find details on SpatialEconometrics.jl functions, as well as their usage in the [package website](https://www.alanleal-econ.com/spatialeconometrics). 
 
 **Questions**
 
