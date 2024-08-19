@@ -1,4 +1,8 @@
 # SpatialEconometrics.jl
+
+<img src="https://alanleal-econ.com/spatialeconometrics/wp-content/uploads/2024/08/SpatialEconometrics_logo.png" height="25%">
+
+
 This package implements spatial models, using maximum likelihood. 
 
 At this current state, we have implemented the ML estimators and, when aplicable, effects for:
@@ -13,6 +17,7 @@ You can  install this package with the Pkg package, by using the following comma
 ```
 using Pkg
 Pkg.add(url="https://github.com/alanleal-econ/spatialeconometrics.jl")
+using SpatialEconometrics
 ```
 
 **Documentation and Tutorials**
