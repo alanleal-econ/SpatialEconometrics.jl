@@ -1,6 +1,8 @@
 # SpatialEconometrics.jl
 
-<img src="https://alanleal-econ.com/spatialeconometrics/wp-content/uploads/2024/08/SpatialEconometrics_logo.png" width="200" alt="Spatial Econometrics Logo">
+<div align="center">
+<img src="https://alanleal-econ.com/spatialeconometrics/wp-content/uploads/2024/08/SpatialEconometrics_logo.png" width="100" alt="Spatial Econometrics Logo">
+</div>
 
 
 
